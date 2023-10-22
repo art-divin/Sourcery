@@ -1,7 +1,7 @@
 import Foundation
 
 class FooBarBaz {
-    typealias Bar = [String: String]
+    typealias Bar = [String]
     var name: String = ""
     var value: Int = 0
 }

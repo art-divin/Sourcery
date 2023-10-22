@@ -24,12 +24,34 @@ let templatesTestsResourcesCopy: [Resource] = [
     .copy("Tests/Context"),
     .copy("Tests/Expected")
 ]
+let sourceryLibTestsResources: [Resource] = [
+    .copy("Stub/Configs"),
+    .copy("Stub/Errors"),
+    .copy("Stub/JavaScriptTemplates"),
+    .copy("Stub/SwiftTemplates"),
+    .copy("Stub/Performance-Code"),
+    .copy("Stub/DryRun-Code"),
+    .copy("Stub/Result"),
+    .copy("Stub/Templates"),
+    .copy("Stub/Source")
+]
 #else
 sourceryLibDependencies.append(.product(name: "Crypto", package: "swift-crypto"))
 let templatesTestsResourcesCopy: [Resource] = [
     .copy("Templates"),
     .copy("Tests/Context_Linux"),
     .copy("Tests/Expected")
+]
+let sourceryLibTestsResources: [Resource] = [
+    .copy("Stub/Configs"),
+    .copy("Stub/Errors"),
+    .copy("Stub/JavaScriptTemplates"),
+    .copy("Stub/SwiftTemplates"),
+    .copy("Stub/Performance-Code"),
+    .copy("Stub/DryRun-Code"),
+    .copy("Stub/Result"),
+    .copy("Stub/Templates"),
+    .copy("Stub/Source_Linux")
 ]
 #endif
 
@@ -147,17 +169,7 @@ var targets: [Target] = [
             exclude: [
                 "Info.plist"
             ],
-            resources: [
-                .copy("Stub/Configs"),
-                .copy("Stub/Errors"),
-                .copy("Stub/JavaScriptTemplates"),
-                .copy("Stub/SwiftTemplates"),
-                .copy("Stub/Performance-Code"),
-                .copy("Stub/DryRun-Code"),
-                .copy("Stub/Result"),
-                .copy("Stub/Templates"),
-                .copy("Stub/Source")
-            ],
+            resources: sourceryLibTestsResources,
             swiftSettings: [.unsafeFlags(["-enable-testing"])]
         ),
         .testTarget(
